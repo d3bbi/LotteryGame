@@ -136,6 +136,27 @@ public class LotteryGameMain {
 			System.out.println("Total numbers matched: " + numbMatch + ". Incredible! You won " + sumMatch + " euro");
 			break;
 		}
+		
+		System.out.println(
+				"\n\r3) GUESS SUM of WINNING GAME \nlet's test your mathematical skills. Hei, do not cheat! Try to do this without calculator.");
+
+		/*
+		 * USER GUESS THE SUM OF THE INITIAL 10 RANDOM NUMBERS the program checks if the
+		 * sum entered by the user is equal to the sum of all random numbers
+		 */
+		System.out.print("Guess what is the sum of the winning numbers: ");
+		int guessSum = 0;
+		int randNumbSum = sumNumbers(arrayRandNumbers);
+		guessSum = scan.nextInt();
+
+		if (randNumbSum == guessSum) {
+			System.out.println("You guessed the the total sum of the winning numbers.Congrats, you won");
+		} else {
+			System.out.println("Nice try!. The sum was " + randNumbSum);
+		}
+
+		System.out.println("\n Thank you for playing with me");
+		System.out.println("Made with <3 by Deborah");
 
 	}
 
