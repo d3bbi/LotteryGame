@@ -4,7 +4,6 @@ public class LotteryGameMain {
 
 	public static void main(String[] args) {
 
-
 		/*
 		 * GENERATE UNIQUE RANDOM NUMBERS The program generate 10 unique random numbers
 		 * using the Random class
@@ -23,7 +22,7 @@ public class LotteryGameMain {
 		System.out.println("Welcome to the new *Hacktoberfest* LOTTERY GAME!"
 				+ "\n The lottery is divided in three games, are you ready to start?");
 		System.out.println("press any letter and enter to continue");
-		
+
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println(" GAME 1) BONUS GAME: test your luck."
@@ -79,6 +78,65 @@ public class LotteryGameMain {
 					+ " euro\n*****************");
 		}
 
+		System.out.println(
+				"\n\rGAME 2) GUESS WINNING NUMBERS \n Try to guess 5 out of the 10 winning numbers that will be drawn later in the game");
+
+		/*
+		 * USER INTERACTION The user is asked to enter 5 numbers if the input number was
+		 * already entered the program ignores it and ask to enter a new number
+		 */
+		System.out.println("Enter 5 lucky numbers");
+		System.out.println("\nwinning numbers");
+
+		int[] userArray = new int[5];
+		for (int i = 0; i < userArray.length; i++) {
+			System.out.print((i + 1) + "> Enter " + " here: ");
+			int userInput = scan.nextInt();
+			userArray[i] = userInput;
+		}
+
+		int numbMatch = countMatches(userArray, arrayRandNumbers);
+
+		System.out.println("\nLucky numbers");
+		displayArray(userArray);
+		System.out.println("\nwinning numbers");
+		displayArray(arrayRandNumbers);
+
+//MATCH NUMBERS
+		/*
+		 * WINNING PRIZES DEPENDING ON HOW MANY MATCHES depending on how many numbers
+		 * the user matched, the user wins the following prizes
+		 */
+		System.out.println("\n\r" + "NUMBERS MATCHED");
+
+		int sumMatch = 0;
+
+		switch (numbMatch) {
+		case 0:
+			System.out.println("You didn't match any of the lottery numbers. You will be more lucky next time!");
+			break;
+		case 1:
+			sumMatch = 100;
+			System.out.println("Total numbers matched: " + numbMatch + ". Incredible! You won " + sumMatch + " euro");
+			break;
+		case 2:
+			sumMatch = 200;
+			System.out.println("Total numbers matched: " + numbMatch + ". Incredible! You won " + sumMatch + " euro");
+			break;
+		case 3:
+			sumMatch = 300;
+			System.out.println("Total numbers matched: " + numbMatch + ". Incredible! You won " + sumMatch + " euro");
+			break;
+		case 4:
+			sumMatch = 400;
+			System.out.println("Total numbers matched: " + numbMatch + ". Incredible! You won " + sumMatch + " euro");
+			break;
+		case 5:
+			sumMatch = 500;
+			System.out.println("Total numbers matched: " + numbMatch + ". Incredible! You won " + sumMatch + " euro");
+			break;
+		}
+
 	}
 
 	/* METHOD: generate random integer number */
@@ -99,6 +157,35 @@ public class LotteryGameMain {
 		}
 		return isDuplicate;
 	}
-
 	
+	/* METHOD : display winning numbers (random numbers */
+	public static void displayArray(int[] array) {
+		for (int numbers : array) {
+			System.out.print(numbers + " ");
+		}
+	}
+
+	/* METHOD: sum the winning numbers */
+	public static int sumNumbers(int[] array) {
+		int sum = 0;
+		for (int number : array) {
+			sum += number;
+		}
+		return sum;
+
+	}
+
+	/* METHOD: check matches */
+	public static int countMatches(int[] luckyArray, int[] winArray) {
+		int matches = 0;
+		for (int i = 0; i < winArray.length; i++) {
+			for (int j = 0; j < luckyArray.length; j++) {
+				if (winArray[i] == luckyArray[j]) {
+					matches++;
+				}
+			}
+		}
+		return matches;
+	}
+
 }
